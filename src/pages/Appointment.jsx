@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import './Appointment.css';
 import { useNavigate } from 'react-router-dom';
-import Header from '../components/Header'; 
+
 
 const Appointment = () => {
   const navigate = useNavigate();
@@ -22,8 +22,7 @@ const Appointment = () => {
   };
 
   return (
-    <>
-      <Header /> 
+  
 
       <Box className="appointment-wrapper">
         <Paper elevation={4} className="appointment-container">
@@ -97,7 +96,7 @@ const Appointment = () => {
           </Box>
         </Paper>
       </Box>
-    </>
+
   );
 };
 

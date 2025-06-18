@@ -33,8 +33,9 @@ const Login = () => {
           <span className="link" onClick={() => navigate('/signup')}>Register for free</span>
         </p>
       </div>
+
       <div className="login-right">
-        <img src="/assets/login-image.png" alt="Dogs" />
+        <img src="/Pictures/1.png" alt="Dogs" />
       </div>
     </div>
   );
