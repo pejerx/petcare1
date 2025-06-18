@@ -1,0 +1,52 @@
+.signup-container {
+  display: flex;
+  height: 100vh;
+  background-color: #ffed75;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.signup-left {
+  width: 40%;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.signup-left h1 {
+  margin: 20px 0;
+}
+
+.brand {
+  font-size: 1.5rem;
+}
+
+.brand .light {
+  font-weight: 300;
+}
+
+.signup-button {
+  margin: 20px 0;
+  background-color: #000 !important;
+  color: white;
+}
+
+.bottom-text {
+  font-size: 0.9rem;
+}
+
+.bottom-text .link {
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.signup-right {
+  width: 60%;
+}
+
+.signup-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
