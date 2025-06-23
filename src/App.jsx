@@ -7,7 +7,7 @@ import Appointment from './pages/Appointment';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Profile from './pages/Profile';
-import Shop from './pages/Shop'; // ✅ Add this
+import Shop from './pages/Shop'; 
 
 function Home() {
   const [open, setOpen] = useState(false);
@@ -29,7 +29,7 @@ function Home() {
   };
 
   const goToShop = () => {
-    navigate('/shop'); // ✅ Add this
+    navigate('/shop'); 
 
   };
 
@@ -50,7 +50,7 @@ function Home() {
               </li>
             ))}
             <li>
-              <Button onClick={goToShop} variant="text" color="inherit">Products</Button> {/* ✅ Add this */}
+              <Button onClick={goToShop} variant="text" color="inherit">Products</Button> 
             </li>
             <li>
               <Button onClick={goToAppointment} variant="text" color="inherit">
@@ -139,7 +139,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/shop" element={<Shop />} /> {/* ✅ Add route for Shop */}
+        <Route path="/shop" element={<Shop />} /> 
       </Routes>
     </Router>
   );
