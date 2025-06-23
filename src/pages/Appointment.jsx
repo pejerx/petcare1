@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Button,
@@ -16,6 +16,9 @@ import { useNavigate } from 'react-router-dom';
 
 const Appointment = () => {
   const navigate = useNavigate();
+
+  const [petType, setPetType] = useState('');
+  const [service, setService] = useState('');
 
   const handleClose = () => {
     navigate('/');
@@ -37,15 +40,20 @@ const Appointment = () => {
             <Grid container spacing={4}>
               <Grid item xs={12} md={6}>
                 <InputLabel className="input-label">Type of Pet</InputLabel>
-                <Select fullWidth defaultValue="" className="tall-select">
-                  <MenuItem value="">Dog</MenuItem>
-                  <MenuItem value="">Cat</MenuItem>
-                  <MenuItem value="">Bird</MenuItem>
-                  <MenuItem value="">Fish</MenuItem>
-                  <MenuItem value="">Hamster</MenuItem>
-                  <MenuItem value="">Guinea Pig</MenuItem>
-                  <MenuItem value="">Rat</MenuItem>
-                  <MenuItem value="">Rabbit</MenuItem>
+                <Select
+                  fullWidth
+                  value={petType}
+                  onChange={e => setPetType(e.target.value)}
+                  className="tall-select"
+                >
+                  <MenuItem value="dog">Dog</MenuItem>
+                  <MenuItem value="cat">Cat</MenuItem>
+                  <MenuItem value="bird">Bird</MenuItem>
+                  <MenuItem value="fish">Fish</MenuItem>
+                  <MenuItem value="hamster">Hamster</MenuItem>
+                  <MenuItem value="guinea_pig">Guinea Pig</MenuItem>
+                  <MenuItem value="rat">Rat</MenuItem>
+                  <MenuItem value="rabbit">Rabbit</MenuItem>
                 </Select>
 
                 <Box mt={3}>
@@ -55,10 +63,14 @@ const Appointment = () => {
 
                 <Box mt={3}>
                   <InputLabel className="input-label">Service</InputLabel>
-                  <Select fullWidth defaultValue="">
-                    <MenuItem value="">Grooming</MenuItem>
-                    <MenuItem value="">Vaccination</MenuItem>
-                    <MenuItem value="">Check-up</MenuItem>
+                  <Select
+                    fullWidth
+                    value={service}
+                    onChange={e => setService(e.target.value)}
+                  >
+                    <MenuItem value="grooming">Grooming</MenuItem>
+                    <MenuItem value="vaccination">Vaccination</MenuItem>
+                    <MenuItem value="checkup">Check-up</MenuItem>
                   </Select>
                 </Box>
               </Grid>
@@ -67,9 +79,10 @@ const Appointment = () => {
                 <InputLabel className="input-label">Location</InputLabel>
                 <Select fullWidth defaultValue="" className="tall-select">
                   <MenuItem value="">Choose a Location</MenuItem>
-                  <MenuItem value="manila">Manila</MenuItem>
-                  <MenuItem value="cebu">Cebu</MenuItem>
-                  <MenuItem value="davao">Davao</MenuItem>
+                  <MenuItem value="talisay">Talisay</MenuItem>
+                  <MenuItem value="cebu">Cebu City</MenuItem>
+                  <MenuItem value="naga">Naga City</MenuItem>
+                  <MenuItem value="minglanilla">Minglanilla</MenuItem>
                 </Select>
 
                 <Box mt={3}>
