@@ -1,17 +1,7 @@
-// App.jsx
 import React, { useState } from 'react';
-import './App.css';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
-import { Button, Backdrop, CircularProgress } from '@mui/material';
-import Appointment from './pages/Appointment';
-import Login from './pages/Login';
-import SignUp from './pages/SignUp';
-import Profile from './pages/Profile';
-import Shop from './pages/Shop'; 
-import AboutUs from './pages/AboutUs'; 
 
-function Home() {
-  const [open, setOpen] = useState(false);
+const Appointment = () => {
+    const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleOpen = () => {
@@ -38,8 +28,7 @@ function Home() {
     setOpen(false);
   };
 
-  return (
-    <div className="app">
+    return(<div className="app">
       <header className="header">
         <nav className="nav">
           <ul className="nav-links">
@@ -83,20 +72,7 @@ function Home() {
         <div className="hero-image" />
       </section>
 
-      <section className="values">
-        {[
-          { icon: '❤️', title: 'Compassion First', text: 'We believe that every pet deserves to be treated like family...' },
-          { icon: '💖', title: 'Wellness at Core', text: 'We take a holistic approach to pet care...' },
-          { icon: '🤝', title: 'Respect & Integrity', text: 'Trust is everything. We build lasting bonds...' },
-          { icon: '🌎', title: 'Community', text: 'We’re part of a vibrant, connected network...' }
-        ].map((val, idx) => (
-          <div className="value-box" key={idx}>
-            <i>{val.icon}</i>
-            <h3>{val.title}</h3>
-            <p>{val.text}</p>
-          </div>
-        ))}
-      </section>
+      
 
       <footer className="footer">
         <div className="footer-brand">
@@ -127,23 +103,7 @@ function Home() {
       >
         <CircularProgress color="inherit" />
       </Backdrop>
-    </div>
-  );
-}
+    </div>)
+};
 
-function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/appointment" element={<Appointment />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/shop" element={<Shop />} /> 
-      </Routes>
-    </Router>
-  );
-}
-
-export default App;
+export default AboutUs;
