@@ -103,7 +103,7 @@ const Appointment = () => {
             </Grid>
 
             <Box className="appointment-footer">
-              <Button variant="outlined" color="inherit"  onClick={handleClose}>Cancel</Button>
+              <Button variant="outlined" color="inherit">Cancel</Button>
               <Button variant="contained" color="success">Confirm</Button>
             </Box>
           </Box>
