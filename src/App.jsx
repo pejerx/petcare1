@@ -1,3 +1,4 @@
+// App.jsx
 import React, { useState } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
@@ -5,6 +6,8 @@ import { Button, Backdrop, CircularProgress } from '@mui/material';
 import Appointment from './pages/Appointment';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
+import Profile from './pages/Profile';
+import Shop from './pages/Shop'; // ✅ Add this
 
 function Home() {
   const [open, setOpen] = useState(false);
@@ -25,6 +28,11 @@ function Home() {
     navigate('/login');
   };
 
+  const goToShop = () => {
+    navigate('/shop'); // ✅ Add this
+
+  };
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -34,13 +42,16 @@ function Home() {
       <header className="header">
         <nav className="nav">
           <ul className="nav-links">
-            {['Services', 'Products', 'About', 'Contact'].map((label) => (
+            {['Services', 'About', 'Contact'].map((label) => (
               <li key={label}>
                 <Button onClick={handleOpen} variant="text" color="inherit">
                   {label}
                 </Button>
               </li>
             ))}
+            <li>
+              <Button onClick={goToShop} variant="text" color="inherit">Products</Button> {/* ✅ Add this */}
+            </li>
             <li>
               <Button onClick={goToAppointment} variant="text" color="inherit">
                 Book now
@@ -53,7 +64,7 @@ function Home() {
           <div className="nav-right">
             <input type="text" placeholder="Search" />
             <Button onClick={goToLogin} variant="outlined">Sign in</Button>
-            <div className="profile-icon" />
+            <div className="profile-icon" onClick={() => navigate('/profile')} style={{ cursor: 'pointer' }} />
           </div>
         </nav>
       </header>
@@ -127,6 +138,8 @@ function App() {
         <Route path="/appointment" element={<Appointment />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/shop" element={<Shop />} /> {/* ✅ Add route for Shop */}
       </Routes>
     </Router>
   );
