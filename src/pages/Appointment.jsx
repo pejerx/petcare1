@@ -25,8 +25,38 @@ const Appointment = () => {
   };
 
   return (
-  
-
+    <>
+      <header className="header">
+        <nav className="nav">
+          <ul className="nav-links">
+            <Button onClick={() => navigate('/shop')} variant="text" color="inherit">
+              Products
+            </Button>
+            {['Services', 'About', 'Contact'].map((label) => (
+              <li key={label}>
+                <Button 
+                  onClick={label === 'Contact' ? () => alert("\uD83D\uDCDE 1234-456-7890 | \uD83D\uDCF1 123-456-7890") : () => alert('This feature is coming soon!')} 
+                  variant="text" color="inherit">
+                  {label}
+                </Button>
+              </li>
+            ))}
+            <li>
+              <Button onClick={() => navigate('/appointment')} variant="text" color="inherit">
+                Book now
+              </Button>
+            </li>
+          </ul>
+          <div className="brand" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
+            <span className="brand-bold">Fetch</span>&<span className="brand-light">Fur</span>
+          </div>
+          <div className="nav-right">
+            <input type="text" placeholder="Search" />
+            <Button onClick={() => navigate('/login')} variant="outlined">Sign in</Button>
+            <div className="profile-icon" />
+          </div>
+        </nav>
+      </header>
       <Box className="appointment-wrapper">
         <Paper elevation={4} className="appointment-container">
           <Box className="appointment-header">
@@ -109,7 +139,7 @@ const Appointment = () => {
           </Box>
         </Paper>
       </Box>
-
+    </>
   );
 };
 
