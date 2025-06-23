@@ -20,57 +20,41 @@ const categories = [
   'Dental Care Products', 'Calming Aids',
 ];
 
-const sampleProducts = [
-  {
-    id: 1,
-    title: 'Premium Antibiotic',
-    price: '$29.99',
-    description: 'Natural ingredients for better health.',
-    category: 'Antibiotics',
-    image: 'https://place-puppy.com/300x300',
-  },
-  {
-    id: 2,
-    title: 'Vitamin Chews',
-    price: '$19.99',
-    description: 'Keep your pet strong and happy.',
-    category: 'Vitamins & Supplements',
-    image: 'https://place-puppy.com/301x301',
-  },
-  {
-    id: 3,
-    title: 'Dental Chew Pack',
-    price: '$14.99',
-    description: 'Cleans teeth and freshens breath.',
-    category: 'Dental Care Products',
-    image: 'https://place-puppy.com/302x302',
-  },
-  {
-    id: 4,
-    title: 'Coat Shine Serum',
-    price: '$24.99',
-    description: 'Shiny and healthy fur guaranteed.',
-    category: 'Skin & Coat Care',
-    image: 'https://place-puppy.com/303x303',
-  },
-];
+const generateProducts = (category) => {
+  return Array.from({ length: 20 }, (_, i) => ({
+    id: `${category}-${i + 1}`,
+    title: `${category} Item ${i + 1}`,
+    price: `$${(Math.random() * 30 + 10).toFixed(2)}`,
+    description: `Top quality ${category.toLowerCase()} for your pet's needs.`,
+    category,
+    image: `https://place-puppy.com/30${i % 10}x30${i % 10}`,
+  }));
+};
+
+const allProducts = categories.flatMap(generateProducts);
+
+const chunkArray = (array, size) => {
+  return Array.from({ length: Math.ceil(array.length / size) }, (_, i) =>
+    array.slice(i * size, i * size + size)
+  );
+};
 
 const Shop = () => {
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState('Vitamins & Supplements');
   const navigate = useNavigate();
 
   const filteredProducts = selectedCategory
-    ? sampleProducts.filter((p) => p.category === selectedCategory)
-    : sampleProducts;
+    ? allProducts.filter((p) => p.category === selectedCategory)
+    : allProducts;
+
+  const productChunks = chunkArray(filteredProducts, 6);
 
   const goTo = (route) => navigate(route);
 
   const sliderSettings = {
     dots: true,
-    infinite: true,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    speed: 500,
+    infinite: false,
+    speed: 600,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
@@ -141,37 +125,36 @@ const Shop = () => {
         </Box>
       </Box>
 
-      {/* Products */}
+      {/* Product Carousel (6 per page) */}
       <Container sx={{ py: 6 }}>
-        <Grid container spacing={4}>
-          {filteredProducts.map((product) => (
-            <Grid item key={product.id} xs={12} sm={6} md={4}>
-              <Card sx={{ height: '100%' }}>
-                <CardMedia
-                  component="img"
-                  height="200"
-                  image={product.image}
-                  alt={product.title}
-                />
-                <CardContent>
-                  <Typography variant="h6">{product.title}</Typography>
-                  <Typography variant="body2">{product.description}</Typography>
-                  <Typography variant="subtitle1" sx={{ fontWeight: 'bold', mt: 1 }}>
-                    {product.price}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
+        <Slider {...sliderSettings}>
+          {productChunks.map((chunk, index) => (
+            <Box key={index} sx={{ px: 2 }}>
+              <Grid container spacing={4}>
+                {chunk.map((product) => (
+                  <Grid item xs={12} sm={6} md={4} key={product.id}>
+                    <Card sx={{ display: 'flex', height: 160 }}>
+                      <CardMedia
+                        component="img"
+                        image={product.image}
+                        alt={product.title}
+                        sx={{ width: 120 }}
+                      />
+                      <CardContent>
+                        <Typography variant="h6">{product.title}</Typography>
+                        <Typography variant="body2">{product.description}</Typography>
+                        <Typography variant="subtitle1" sx={{ fontWeight: 'bold', mt: 1 }}>
+                          {product.price}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                ))}
+              </Grid>
+            </Box>
           ))}
-        </Grid>
+        </Slider>
       </Container>
-
-      {/* Pagination */}
-      <Box sx={{ textAlign: 'center', mb: 5 }}>
-        <Button>1</Button>
-        <Button>2</Button>
-        <Button>Next →</Button>
-      </Box>
 
       {/* Footer */}
       <footer className="footer">

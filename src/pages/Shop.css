@@ -8,7 +8,6 @@
   font-family: 'Arial', sans-serif;
 }
 
-/* Header */
 .header {
   background-color: #fff;
   padding: 10px 30px;
@@ -43,7 +42,6 @@
   color: orange;
 }
 
-/* Carousel */
 .carousel-section {
   display: flex;
   flex-direction: column;
@@ -65,7 +63,6 @@
   font-size: 24px;
 }
 
-/* Categories */
 .category-section {
   padding: 20px;
   text-align: center;
@@ -95,7 +92,6 @@
   margin-bottom: 5px;
 }
 
-/* Product Cards */
 .product-grid {
   padding: 30px;
 }
@@ -120,7 +116,7 @@
   font-weight: bold;
 }
 
-/* Pagination */
+
 .pagination {
   display: flex;
   justify-content: center;
@@ -128,7 +124,7 @@
   margin: 30px 0;
 }
 
-/* Footer */
+
 .footer {
   background-color: #d68c8c;
   padding: 30px 20px;
